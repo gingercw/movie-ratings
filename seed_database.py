@@ -45,7 +45,7 @@ for n in range(10):
     # TODO: create 10 ratings for the user
     for x in range(10):
       
-      db_rating = crud.create_rating(db_user, choice(movies_in_db), randint(1,6))
+      db_rating = crud.create_rating(db_user, choice(movies_in_db), randint(0,6))
       model.db.session.add(db_rating)
 
 model.db.session.commit()

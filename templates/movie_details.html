@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ movie.title }} - Details{% endblock %}
+
+{% block body %}
+<h1>{{ movie.title }}</h1>
+
+<p>
+  {{ movie.overview }}
+</p>
+
+{% if ratings %}
+<p>
+  Movie rating: {{ ratings.score }}
+</p>
+{% else %}
+<p>
+  No ratings yet! Add a rating below.
+</p>
+{% endif %}
+
+<form action="/movies/{{ movie.movie_id }}/rating" method="POST">
+  Choose your rating:
+<select name="give-score">
+{% for num in range(6) %}
+  <option value="{{ num }}">{{ num }}</option>
+{% endfor %}
+</select>
+
+<input type="submit"/>
+</form>
+
+
+<img src="{{ movie.poster_path }}" width="400" >
+{% endblock %}
